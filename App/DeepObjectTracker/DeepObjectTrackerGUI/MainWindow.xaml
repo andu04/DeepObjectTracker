@@ -5,8 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeepObjectTrackerGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        Name="mainWindow">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Name="exitMenuItem" Header="Exit" Click="exitMenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Border Grid.Row="1" Background="AntiqueWhite">
+            <Canvas Name="drawingCanvas" Grid.Row="1" Background="Transparent" Focusable="True"
+                    MouseEnter="drawingCanvas_MouseEnter"
+                    MouseMove="drawingCanvas_MouseMove"
+                    MouseLeave="drawingCanvas_MouseLeave"
+                    KeyDown="drawingCanvas_KeyDown"
+                    KeyUp="drawingCanvas_KeyUp"/>
+        </Border>
         
-    </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+<!--True mouse position-->
+            <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center" Text="Current position"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="1" 
+                   HorizontalAlignment="Center" Text="OX axe position"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="1"
+                   HorizontalAlignment="Center" Text="{Binding TrueXPosition, ElementName=mainWindow}"/>
+
+            <TextBlock Grid.Column="0" Grid.Row="2"
+                   HorizontalAlignment="Center" Text="OY axe position"/>
+
+            <TextBlock Grid.Column="1" Grid.Row="2"
+                   HorizontalAlignment="Center" Text="{Binding TrueYPosition, ElementName=mainWindow}"/>
+<!--Predicted mouse position-->
+            <TextBlock Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2"
+                   HorizontalAlignment="Center" Text="Predicted position"/>
+
+            <TextBlock Grid.Column="2" Grid.Row="1" 
+                   HorizontalAlignment="Center" Text="OX axe position"/>
+
+            <TextBlock Grid.Column="3" Grid.Row="1"
+                   HorizontalAlignment="Center" Text="{Binding PredictedXPosition, ElementName=mainWindow}"/>
+
+            <TextBlock Grid.Column="2" Grid.Row="2"
+                   HorizontalAlignment="Center" Text="OY axe position"/>
+
+            <TextBlock Grid.Column="3" Grid.Row="2"
+                   HorizontalAlignment="Center" Text="{Binding PredictedYPosition, ElementName=mainWindow}"/>
+            
+        </Grid>
+        
+        </Grid>
 </Window>
